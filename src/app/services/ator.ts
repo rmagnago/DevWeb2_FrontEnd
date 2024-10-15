@@ -7,7 +7,7 @@ import { Ator } from '../models/ator';
     providedIn: 'root'
 })
 export class AtorService {
-    private apiUrl = 'http://localhost:3000/ator';
+    private apiUrl = 'http://localhost:3000/api/ator';
 
     constructor(private http: HttpClient) { }
 
@@ -15,21 +15,21 @@ export class AtorService {
         return this.http.get<Ator[]>(this.apiUrl);
     }
 
-    getAtorById(id: number): Observable<Ator> {
+    getAtorById(id: string): Observable<Ator> {
         const url = `${this.apiUrl}/${id}`;
         return this.http.get<Ator>(url);
     }
 
-    criarAtor(ator: Ator): Observable<Ator> {
-        return this.http.post<Ator>(this.apiUrl, ator);
+    criarAtor(Ator: Ator): Observable<Ator> {
+        return this.http.post<Ator>(this.apiUrl, Ator);
     }
 
-    atualizarAtor(id: number, ator: Ator): Observable<Ator> {
+    atualizarAtor(Ator: Ator, id: string): Observable<Ator> {
         const url = `${this.apiUrl}/${id}`;
-        return this.http.put<Ator>(url, ator);
+        return this.http.put<Ator>(url, Ator);
     }
 
-    deletarAtor(id: number): Observable<void> {
+    deletarAtor(id: string): Observable<void> {
         const url = `${this.apiUrl}/${id}`;
         return this.http.delete<void>(url);
     }

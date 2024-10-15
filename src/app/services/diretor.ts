@@ -7,7 +7,7 @@ import { Diretor } from '../models/diretor';
     providedIn: 'root'
 })
 export class DiretorService {
-    private apiUrl = 'http://localhost:3000/diretor';
+    private apiUrl = 'http://localhost:3000/api/diretor';
 
     constructor(private http: HttpClient) { }
 
@@ -15,7 +15,7 @@ export class DiretorService {
         return this.http.get<Diretor[]>(this.apiUrl);
     }
 
-    getDiretorById(id: number): Observable<Diretor> {
+    getDiretorById(id: string): Observable<Diretor> {
         const url = `${this.apiUrl}/${id}`;
         return this.http.get<Diretor>(url);
     }
@@ -24,12 +24,12 @@ export class DiretorService {
         return this.http.post<Diretor>(this.apiUrl, Diretor);
     }
 
-    atualizarDiretor(id: number, Diretor: Diretor): Observable<Diretor> {
+    atualizarDiretor(Diretor: Diretor, id: string): Observable<Diretor> {
         const url = `${this.apiUrl}/${id}`;
         return this.http.put<Diretor>(url, Diretor);
     }
 
-    deletarDiretor(id: number): Observable<void> {
+    deletarDiretor(id: string): Observable<void> {
         const url = `${this.apiUrl}/${id}`;
         return this.http.delete<void>(url);
     }
