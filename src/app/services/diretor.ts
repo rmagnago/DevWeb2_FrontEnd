@@ -21,7 +21,8 @@ export class DiretorService {
     }
 
     criarDiretor(Diretor: Diretor): Observable<Diretor> {
-        return this.http.post<Diretor>(this.apiUrl, Diretor);
+        const url = `${this.apiUrl}/novo`;
+        return this.http.post<Diretor>(url, Diretor);
     }
 
     atualizarDiretor(Diretor: Diretor, id: string): Observable<Diretor> {
