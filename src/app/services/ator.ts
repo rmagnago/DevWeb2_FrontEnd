@@ -7,7 +7,7 @@ import { Ator } from '../models/ator';
     providedIn: 'root'
 })
 export class AtorService {
-    private apiUrl = 'http://localhost:3000/api/ator';
+    private apiUrl = 'http://localhost:8080/api/ator';
 
     constructor(private http: HttpClient) { }
 
@@ -21,7 +21,8 @@ export class AtorService {
     }
 
     criarAtor(Ator: Ator): Observable<Ator> {
-        return this.http.post<Ator>(this.apiUrl, Ator);
+        const url = `${this.apiUrl}/novo`;
+        return this.http.post<Ator>(url, Ator);
     }
 
     atualizarAtor(Ator: Ator, id: string): Observable<Ator> {

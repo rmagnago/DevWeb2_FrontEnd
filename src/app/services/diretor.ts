@@ -7,7 +7,7 @@ import { Diretor } from '../models/diretor';
     providedIn: 'root'
 })
 export class DiretorService {
-    private apiUrl = 'http://localhost:3000/api/diretor';
+    private apiUrl = 'http://localhost:8080/api/diretor';
 
     constructor(private http: HttpClient) { }
 

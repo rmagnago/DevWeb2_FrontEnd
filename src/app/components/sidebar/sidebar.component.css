@@ -5,9 +5,8 @@
 }
 
 .sidebar {
-    position: absolute;
-    top: 0;
-    left: 0;
+    padding: 0;
+    margin: 0;
     color: beige;
     background-color: rgb(180, 5, 5);
     height: 100vh;

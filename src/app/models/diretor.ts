@@ -1,4 +1,4 @@
 export interface Diretor {
-    id: string;
+    id?: string;
     nome: string;
 }
