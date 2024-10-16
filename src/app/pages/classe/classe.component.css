@@ -44,18 +44,36 @@ button {
     padding: 10px;
     border: none;
     border-radius: 4px;
-    background-color: #4CAF50;
     color: white;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #45a049;
+#excluir {
+    background-color: #ff2626;
 }
 
-/* Estilizando a tabela */
+#editar {
+    background-color: #59b8dd;
+}
+
+#salvar {
+    background-color: #4CAF50;
+}
+
+#salvar:hover {
+    background-color: #288f2d;
+}
+
+#editar:hover {
+    background-color: #2b8eb6;
+}
+
+#excluir:hover {
+    background-color: #c50f0f;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;

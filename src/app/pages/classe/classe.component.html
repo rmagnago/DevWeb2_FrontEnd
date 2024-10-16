@@ -8,12 +8,13 @@
 
 
         <label for="title">Prazo de Devolução: </label>
-        <input type="date" placeholder="Digite o nome" [(ngModel)]="prazoDevolucao" [ngModelOptions]="{standalone: true}">
-        <button>
+        <input type="date" placeholder="Digite o nome" [(ngModel)]="prazoDevolucao"
+            [ngModelOptions]="{standalone: true}">
+        <button id="salvar">
             Salvar
         </button>
     </div>
-</form> 
+</form>
 
 <div class="">
     <table>
@@ -27,6 +28,9 @@
                 </th>
                 <th>
                     Prazo de Devolução:
+                </th>
+                <th>
+                    Ações
                 </th>
             </tr>
         </thead>
@@ -42,6 +46,10 @@
                 </td>
                 <td>
                     {{ item.prazoDevolucao }}
+                </td>
+                <td>
+                    <button id="editar">Editar</button>
+                    <button id="excluir">Excluir</button>
                 </td>
             </tr>
             }
