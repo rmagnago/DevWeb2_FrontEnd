@@ -21,7 +21,8 @@ export class ClasseService {
     }
 
     criarClasse(Classe: Classe): Observable<Classe> {
-        return this.http.post<Classe>(this.apiUrl, Classe);
+        const url = `${this.apiUrl}/novo`;
+        return this.http.post<Classe>(url, Classe);
     }
 
     atualizarClasse(Classe: Classe, id: string): Observable<Classe> {

@@ -24,15 +24,17 @@ export class ClasseFormComponent implements OnInit {
   }
 
   salvarClasse() {
-    if (this.nome) {
+    if (this.nome && this.valor && this.prazoDevolucao) {
       const novoClasse: Classe = { nome: this.nome, valor: this.valor, prazoDevolucao: this.prazoDevolucao };
       this.ClasseService.criarClasse(novoClasse).subscribe(() => {
         this.nome = '';
+        this.valor = 0;
+        this.prazoDevolucao = 0;
         alert('Classe salvo com sucesso!');
         this.ngOnInit();
       });
     } else {
-      alert('Nome do classe é obrigatório');
+      alert('Campos obrigatórios não foram preenchidos');
     }
   }
 }
