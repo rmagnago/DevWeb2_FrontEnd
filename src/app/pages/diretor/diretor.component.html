@@ -2,7 +2,7 @@
     <div class="input">
         <label for="title">Nome do Diretor: </label>
         <input type="text" placeholder="Digite o nome" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}">
-        <button>
+        <button id="salvar">
             Salvar
         </button>
     </div>
@@ -15,6 +15,9 @@
                 <th>
                     Diretores: 
                 </th>
+                <th>
+                    Ações
+                </th>
             </tr>
         </thead>
 
@@ -23,6 +26,10 @@
             <tr>
                 <td>
                     {{ item.nome }}
+                </td>
+                <td>
+                    <button id="editar">Editar</button>
+                    <button id="excluir">Excluir</button>
                 </td>
             </tr>
             }

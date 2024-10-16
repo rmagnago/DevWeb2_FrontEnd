@@ -15,11 +15,10 @@ form {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    width: 300px;
+    width: 350px;
 }
 
-form div {
+form .input {
     display: flex;
     flex-direction: column;
 }
@@ -29,7 +28,9 @@ label {
     margin-bottom: 5px;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="number"],
+input[type="date"] {
     padding: 10px;
     border-radius: 4px;
     border: 1px solid #ccc;
@@ -43,22 +44,41 @@ button {
     padding: 10px;
     border: none;
     border-radius: 4px;
-    background-color: #4CAF50;
     color: white;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #45a049;
+#excluir {
+    background-color: #ff2626;
+}
+
+#editar {
+    background-color: #59b8dd;
+}
+
+#salvar {
+    background-color: #4CAF50;
+}
+
+#salvar:hover {
+    background-color: #288f2d;
+}
+
+#editar:hover {
+    background-color: #2b8eb6;
+}
+
+#excluir:hover {
+    background-color: #c50f0f;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    background-color: beige;
+    background-color: #fff;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
@@ -83,8 +103,4 @@ table tr:nth-child(even) {
 table tr:hover {
     background-color: #f1f1f1;
     cursor: pointer;
-}
-
-.input {
-    padding: 20px;
 }
