@@ -1,7 +1,31 @@
-<form>
-    <div>
-        <label for="title">Nome do diretor: </label>
-        <input type="text" placeholder="Rafael">
+<form (ngSubmit)="salvarDiretor()">
+    <div class="input">
+        <label for="title">Nome do Diretor: </label>
+        <input type="text" placeholder="Digite o nome" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}">
+        <button>
+            Salvar
+        </button>
     </div>
-    <button></button>
 </form>
+
+<div class="">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Diretores: 
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (item of diretores; track $index) {
+            <tr>
+                <td>
+                    {{ item.nome }}
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

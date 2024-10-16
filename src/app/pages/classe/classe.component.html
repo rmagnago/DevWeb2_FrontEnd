@@ -1,1 +1,38 @@
-<p>classe works!</p>
+<form (ngSubmit)="salvarClasse()">
+    <div class="input">
+        <label for="title">Nome da Classe: </label>
+        <input type="text" placeholder="Digite o nome" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}">
+
+        <label for="title">Valor: </label>
+        <input type="number" placeholder="Digite o nome" [(ngModel)]="valor" [ngModelOptions]="{standalone: true}">
+
+
+        <label for="title">Prazo de Devolução: </label>
+        <input type="date" placeholder="Digite o nome" [(ngModel)]="prazoDevolucao" [ngModelOptions]="{standalone: true}">
+        <button>
+            Salvar
+        </button>
+    </div>
+</form> 
+
+<div class="">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Classes:
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (item of classes; track $index) {
+            <tr>
+                <td>
+                    {{ item.nome }}
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { AtorFormComponent } from './pages/ator/ator.component';
-import { ClasseComponent } from './pages/classe/classe.component';
+import { ClasseFormComponent } from './pages/classe/classe.component';
+import { DiretorFormComponent } from './pages/diretor/diretor.component';
 
 export const routes: Routes = [
     {
@@ -12,11 +13,12 @@ export const routes: Routes = [
         component: AtorFormComponent
     },
     {
-        path: "classe",
-        component: ClasseComponent
+        path: "diretor",
+        component: DiretorFormComponent
     },
     {
-        path: "dretor",
-        component: AtorFormComponent
+        path: "classe",
+        component: ClasseFormComponent
     },
+
 ];
