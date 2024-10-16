@@ -3,11 +3,15 @@ import { ClasseService } from '../../services/classe';
 import { Classe } from '../../models/classe';
 import { FormsModule } from '@angular/forms';
 
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { EditarAtorDialogComponent } from '../../components/editar-ator-dialog/editar-ator-dialog.component';
+import { EditarClasseDialogComponent } from '../../components/editar-classe-dialog/editar-classe-dialog.component';
+
 @Component({
   selector: 'app-classe-form',
   templateUrl: './classe.component.html',
   styleUrls: ['./classe.component.css'],
-  imports: [FormsModule],
+  imports: [FormsModule, MatDialogModule],
   standalone: true
 })
 export class ClasseFormComponent implements OnInit {
@@ -16,7 +20,7 @@ export class ClasseFormComponent implements OnInit {
   prazoDevolucao: number = 0;
   classes!: Classe[];
 
-  constructor(private ClasseService: ClasseService) { }
+  constructor(private ClasseService: ClasseService, public dialog: MatDialog) { }
   ngOnInit(): void {
     this.ClasseService.getClasses().subscribe((resposta) => {
       this.classes = resposta;
@@ -28,6 +32,28 @@ export class ClasseFormComponent implements OnInit {
       this.classes = resposta;
     });
   }
+
+
+  abrirDialog(classe: Classe): void {
+    const dialogRef = this.dialog.open(EditarClasseDialogComponent, {
+      width: '250px',
+      data: classe,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.atualizarClasse(result);
+      }
+    });
+  }
+
+  atualizarClasse(classe: Classe): void {
+    this.ClasseService.atualizarClasse(classe, classe.id!).subscribe(() => {
+      alert('Classe atualizado com sucesso!');
+      this.carregarClasses();
+    });
+  }
+
 
   apagarClasse(id: string): void {
     if (confirm('Tem certeza que deseja apagar esta classe?')) {

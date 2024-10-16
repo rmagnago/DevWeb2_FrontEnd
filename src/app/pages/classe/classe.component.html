@@ -48,7 +48,7 @@
                     {{ item.prazoDevolucao }}
                 </td>
                 <td>
-                    <button id="editar">Editar</button>
+                    <button id="editar" (click)="abrirDialog(item)">Editar</button>
                     <button id="excluir" (click)="apagarClasse(item.id!)">Excluir</button>
                 </td>
             </tr>

@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Editar Classe</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Nome do Classe</mat-label>
+    <input matInput [(ngModel)]="data.nome">
+  </mat-form-field><mat-form-field>
+    <mat-label>Valor</mat-label>
+    <input matInput [(ngModel)]="data.valor">
+  </mat-form-field><mat-form-field>
+    <mat-label>Prazo de devolução</mat-label>
+    <input matInput [(ngModel)]="data.prazoDevolucao">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data">Salvar</button>
+</mat-dialog-actions>

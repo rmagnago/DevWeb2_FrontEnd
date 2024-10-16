@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Editar Ator</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Nome do Ator</mat-label>
+    <input matInput [(ngModel)]="data.nome">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data">Salvar</button>
+</mat-dialog-actions>
