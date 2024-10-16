@@ -20,6 +20,21 @@ export class DiretorFormComponent implements OnInit {
       this.diretores = resposta;
     })
   }
+  
+  carregarDiretores(): void {
+    this.diretorService.getDiretores().subscribe((resposta) => {
+      this.diretores = resposta;
+    });
+  }
+
+  apagarDiretor(id: string): void {
+    if (confirm('Tem certeza que deseja apagar este diretor?')) {
+      this.diretorService.deletarDiretor(id).subscribe(() => {
+        alert('Diretor apagado com sucesso!');
+        this.carregarDiretores();
+      });
+    }
+  }
 
   salvarDiretor() {
     console.log(this.nome)

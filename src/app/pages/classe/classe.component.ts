@@ -23,6 +23,21 @@ export class ClasseFormComponent implements OnInit {
     })
   }
 
+  carregarClasses(): void {
+    this.ClasseService.getClasses().subscribe((resposta) => {
+      this.classes = resposta;
+    });
+  }
+
+  apagarClasse(id: string): void {
+    if (confirm('Tem certeza que deseja apagar esta classe?')) {
+      this.ClasseService.deletarClasse(id).subscribe(() => {
+        alert('Classe apagado com sucesso!');
+        this.carregarClasses();
+      });
+    }
+  }
+
   salvarClasse() {
     if (this.nome && this.valor && this.prazoDevolucao) {
       const novoClasse: Classe = { nome: this.nome, valor: this.valor, prazoDevolucao: this.prazoDevolucao };

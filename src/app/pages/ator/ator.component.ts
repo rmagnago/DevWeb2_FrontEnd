@@ -21,8 +21,22 @@ export class AtorFormComponent implements OnInit {
     })
   }
 
+  carregarAtores(): void {
+    this.atorService.getAtores().subscribe((resposta) => {
+      this.atores = resposta;
+    });
+  }
+
+  apagarAtor(id: string): void {
+    if (confirm('Tem certeza que deseja apagar este ator?')) {
+      this.atorService.deletarAtor(id).subscribe(() => {
+        alert('Ator apagado com sucesso!');
+        this.carregarAtores();
+      });
+    }
+  }
+
   salvarAtor() {
-    console.log(this.nome)
     if (this.nome) {
       const novoAtor: Ator = { nome: this.nome };
       this.atorService.criarAtor(novoAtor).subscribe(() => {
