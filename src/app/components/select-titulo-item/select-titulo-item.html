@@ -1,0 +1,11 @@
+<form>
+    <h6>Titulos:</h6>
+    <mat-form-field>
+        <mat-label>Titulos</mat-label>
+        <mat-select [(ngModel)]="selectedValue" name="titulos">
+            @for (item of titulos; track item) {
+            <mat-option [value]="item.id">{{item.id}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+</form>

@@ -20,14 +20,14 @@ export class ItemService {
         return this.http.get<Item>(url);
     }
 
-    criarItem(Item: Item): Observable<Item> {
+    criarItem(item: Item): Observable<Item> {
         const url = `${this.apiUrl}/novo`;
-        return this.http.post<Item>(url, Item);
+        return this.http.post<Item>(url, item);
     }
 
-    atualizarItem(Item: Item, id: number): Observable<Item> {
+    atualizarItem(item: Item, id: number): Observable<Item> {
         const url = `${this.apiUrl}/${id}`;
-        return this.http.put<Item>(url, Item);
+        return this.http.put<Item>(url, item);
     }
 
     deletarItem(id: number): Observable<void> {

@@ -20,14 +20,14 @@ export class TituloService {
         return this.http.get<Titulo>(url);
     }
 
-    criarTitulo(Titulo: Titulo): Observable<Titulo> {
+    criarTitulo(titulo: Titulo): Observable<Titulo> {
         const url = `${this.apiUrl}/novo`;
-        return this.http.post<Titulo>(url, Titulo);
+        return this.http.post<Titulo>(url, titulo);
     }
 
-    atualizarTitulo(Titulo: Titulo, id: string): Observable<Titulo> {
+    atualizarTitulo(titulo: Titulo, id: string): Observable<Titulo> {
         const url = `${this.apiUrl}/${id}`;
-        return this.http.put<Titulo>(url, Titulo);
+        return this.http.put<Titulo>(url, titulo);
     }
 
     deletarTitulo(id: string): Observable<void> {

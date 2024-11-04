@@ -4,6 +4,7 @@ import { Ator } from '../../models/ator';
 import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';  // Importe o MatDialog e o MatDialogModule
 import { EditarAtorDialogComponent } from '../../components/editar-ator-dialog/editar-ator-dialog.component';
+import { Titulo } from '../../models/titulo';
 
 @Component({
   selector: 'app-ator-form',
@@ -14,6 +15,7 @@ import { EditarAtorDialogComponent } from '../../components/editar-ator-dialog/e
 })
 export class AtorFormComponent implements OnInit {
   nome: string = '';
+  titulos!: Titulo[];
   atores!: Ator[];
 
   constructor(private atorService: AtorService, public dialog: MatDialog) { }
@@ -60,7 +62,7 @@ export class AtorFormComponent implements OnInit {
 
   salvarAtor() {
     if (this.nome) {
-      const novoAtor: Ator = { nome: this.nome };
+      const novoAtor: Ator = { nome: this.nome, titulos: this.titulos };
       this.atorService.criarAtor(novoAtor).subscribe(() => {
         this.nome = '';
         alert('Ator salvo com sucesso!');

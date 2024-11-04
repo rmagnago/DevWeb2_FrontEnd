@@ -4,6 +4,7 @@ import { Diretor } from '../../models/diretor';
 import { FormsModule } from '@angular/forms';
 import { EditarDiretorDialogComponent } from '../../components/editar-diretor-dialog/editar-diretor-dialog.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { Titulo } from '../../models/titulo';
 
 @Component({
   selector: 'app-diretor-form',
@@ -14,6 +15,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 })
 export class DiretorFormComponent implements OnInit {
   nome: string = '';
+  titulos!: Titulo[];
   diretores!: Diretor[];
 
   constructor(private diretorService: DiretorService, public dialog: MatDialog) { }
@@ -61,7 +63,7 @@ export class DiretorFormComponent implements OnInit {
   salvarDiretor() {
     console.log(this.nome)
     if (this.nome) {
-      const novoDiretor: Diretor = { nome: this.nome };
+      const novoDiretor: Diretor = { nome: this.nome, titulos: this.titulos };
       this.diretorService.criarDiretor(novoDiretor).subscribe(() => {
         this.nome = '';
         alert('Diretor salvo com sucesso!');

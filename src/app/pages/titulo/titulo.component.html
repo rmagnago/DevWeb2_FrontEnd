@@ -1,0 +1,59 @@
+<div style="display: flex; flex-direction: row;">
+    <form (ngSubmit)="salvarTitulo()">
+
+        <div class="input">
+
+            <label for="title">Nome do Titulo: </label>
+            <input type="text" placeholder="Digite o nome" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}">
+
+            <label for="title">Ano: </label>
+            <input type="number" min="0" max="2025" placeholder="Digite o ano" [(ngModel)]="ano"
+                [ngModelOptions]="{standalone: true}">
+
+            <label for="title">Sinopse do titulo: </label>
+            <input type="text" placeholder="Digite a sinopse" [(ngModel)]="sinopse"
+                [ngModelOptions]="{standalone: true}">
+
+            <label for="title">Categoria: </label>
+            <input type="text" placeholder="Digite a categoria" [(ngModel)]="categoria"
+                [ngModelOptions]="{standalone: true}">
+
+            <select-diretor-titulo />
+
+            <select-classe-titulo />
+
+            <button id="salvar">
+                Salvar
+            </button>
+        </div>
+    </form>
+
+    <div class="">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Titulos:
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (item of titulos; track $index) {
+                <tr>
+                    <td>
+                        {{ item.nome }}
+                    </td>
+                    <td>
+                        <!-- <button id="editar" (click)="abrirDialog(item)">Editar</button> -->
+                        <button id="excluir" (click)="apagarTitulo(item.id!)">Excluir</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

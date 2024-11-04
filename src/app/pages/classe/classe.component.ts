@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { EditarAtorDialogComponent } from '../../components/editar-ator-dialog/editar-ator-dialog.component';
 import { EditarClasseDialogComponent } from '../../components/editar-classe-dialog/editar-classe-dialog.component';
+import { Titulo } from '../../models/titulo';
 
 @Component({
   selector: 'app-classe-form',
@@ -18,6 +19,7 @@ export class ClasseFormComponent implements OnInit {
   nome: string = '';
   valor: number = 0;
   prazoDevolucao: number = 0;
+  titulos!: Titulo[];
   classes!: Classe[];
 
   constructor(private ClasseService: ClasseService, public dialog: MatDialog) { }
@@ -66,7 +68,7 @@ export class ClasseFormComponent implements OnInit {
 
   salvarClasse() {
     if (this.nome && this.valor && this.prazoDevolucao) {
-      const novoClasse: Classe = { nome: this.nome, valor: this.valor, prazoDevolucao: this.prazoDevolucao };
+      const novoClasse: Classe = { nome: this.nome, valor: this.valor, prazoDevolucao: this.prazoDevolucao, titulos: this.titulos };
       this.ClasseService.criarClasse(novoClasse).subscribe(() => {
         this.nome = '';
         this.valor = 0;

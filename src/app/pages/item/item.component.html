@@ -1,0 +1,53 @@
+<div style="display: flex; flex-direction: row;">
+    <form (ngSubmit)="salvarItem()">
+
+        <div class="input">
+
+            <label for="title">Numero de Serie: </label>
+            <input type="number" placeholder="Digite o numero" [(ngModel)]="numSerie"
+                [ngModelOptions]="{standalone: true}">
+
+            <label for="title">Data de Aquisicao: </label>
+            <input type="date" [(ngModel)]="dtAquisicao" [ngModelOptions]="{standalone: true}">
+
+            <label for="title">Tipo item: </label>
+            <input type="text" placeholder="Tipo do item" [(ngModel)]="tipoItem" [ngModelOptions]="{standalone: true}">
+
+            <select-titulo-item />
+
+            <button id="salvar">
+                Salvar
+            </button>
+        </div>
+    </form>
+
+    <div class="">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Itens:
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (item of itens; track $index) {
+                <tr>
+                    <td>
+                        {{ item.titulo }}
+                    </td>
+                    <td>
+                        <!-- <button id="editar" (click)="abrirDialog(item)">Editar</button> -->
+                        <button id="excluir"
+                            (click)="numSerie !== undefined ? apagarItem(item.numSerie!) : null">Excluir</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
