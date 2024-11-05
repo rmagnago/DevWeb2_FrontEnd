@@ -10,8 +10,9 @@
 #nome-sidebar {
     display: flex;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     margin-bottom: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .container {
