@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { Diretor } from '../../models/diretor';
+import { DiretorService } from '../../services/diretor';
 
 @Component({
     selector: 'select-diretor-titulo',
@@ -11,7 +12,20 @@ import { Diretor } from '../../models/diretor';
     standalone: true,
     imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule],
 })
-export class SelectDiretorComponent {
-    selectedValue!: string;
-    diretores!: Diretor[];
+export class SelectDiretorComponent implements OnInit {
+    diretores: Diretor[] = [];
+    selectedDiretor: Diretor | null = null;
+
+    constructor(private diretorService: DiretorService) { }
+
+    ngOnInit(): void {
+        this.diretorService.getDiretores().subscribe(
+            (data) => {
+                this.diretores = data;
+            },
+            (error) => {
+                console.error('Erro ao carregar diretores', error);
+            }
+        );
+    }
 }

@@ -2,9 +2,9 @@
     <h6>Diretor:</h6>
     <mat-form-field>
         <mat-label>Diretor</mat-label>
-        <mat-select [(ngModel)]="selectedValue" name="diretor">
+        <mat-select [(ngModel)]="selectedDiretor" name="diretor">
             @for (item of diretores; track item) {
-            <mat-option [value]="item.id">{{item.id}}</mat-option>
+            <mat-option [value]="item.nome">{{item.nome}}</mat-option>
             }
         </mat-select>
     </mat-form-field>
