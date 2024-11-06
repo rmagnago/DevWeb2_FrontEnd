@@ -8,12 +8,13 @@ import { Diretor } from '../../models/diretor';
 import { Classe } from '../../models/classe';
 import { SelectDiretorComponent } from '../../components/titulo/select-diretor/select-diretor';
 import { SelectClasseComponent } from '../../components/titulo/select-classe/select-classe';
+import { SelectAtoresComponent } from "../../components/titulo/select-atores/select-atores";
 
 @Component({
   selector: 'app-titulo-form',
   templateUrl: './titulo.component.html',
   styleUrls: ['./titulo.component.css'],
-  imports: [FormsModule, MatDialogModule, SelectDiretorComponent, SelectClasseComponent],
+  imports: [FormsModule, MatDialogModule, SelectDiretorComponent, SelectClasseComponent, SelectAtoresComponent],
   standalone: true
 })
 export class TituloFormComponent implements OnInit {

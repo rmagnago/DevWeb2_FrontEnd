@@ -12,7 +12,7 @@ import { AtorService } from '../../../services/ator';
     standalone: true,
     imports: [MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule],
 })
-export class SelectMultipleExample implements OnInit {
+export class SelectAtoresComponent implements OnInit {
     formControl = new FormControl('');
     atores: Ator[] = [];
 
