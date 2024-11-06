@@ -3,12 +3,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { Classe } from '../../models/classe';
-import { ClasseService } from '../../services/classe';
+import { Classe } from '../../../models/classe';
+import { ClasseService } from '../../../services/classe';
 
 @Component({
     selector: 'select-classe-titulo',
-    templateUrl: 'select-classe-titulo.html',
+    templateUrl: 'select-classe.html',
     standalone: true,
     imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule],
 })

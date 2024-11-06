@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AtorService } from '../../services/ator';
 import { Ator } from '../../models/ator';
 import { FormsModule } from '@angular/forms';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';  // Importe o MatDialog e o MatDialogModule
-import { EditarAtorDialogComponent } from '../../components/editar-ator-dialog/editar-ator-dialog.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Titulo } from '../../models/titulo';
+import { EditarAtorDialogComponent } from '../../components/ator/editar-ator-dialog/editar-ator-dialog.component';
 
 @Component({
   selector: 'app-ator-form',

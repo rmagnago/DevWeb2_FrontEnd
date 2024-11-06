@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DiretorService } from '../../services/diretor';
 import { Diretor } from '../../models/diretor';
 import { FormsModule } from '@angular/forms';
-import { EditarDiretorDialogComponent } from '../../components/editar-diretor-dialog/editar-diretor-dialog.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Titulo } from '../../models/titulo';
+import { EditarDiretorDialogComponent } from '../../components/diretor/editar-diretor-dialog/editar-diretor-dialog.component';
 
 @Component({
   selector: 'app-diretor-form',

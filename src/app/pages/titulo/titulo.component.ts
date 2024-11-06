@@ -6,8 +6,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Ator } from '../../models/ator';
 import { Diretor } from '../../models/diretor';
 import { Classe } from '../../models/classe';
-import { SelectDiretorComponent } from '../../components/select-diretor-titulo/select-diretor-titulo';
-import { SelectClasseComponent } from '../../components/select-classe-titulo/select-classe-titulo';
+import { SelectDiretorComponent } from '../../components/titulo/select-diretor/select-diretor';
+import { SelectClasseComponent } from '../../components/titulo/select-classe/select-classe';
 
 @Component({
   selector: 'app-titulo-form',

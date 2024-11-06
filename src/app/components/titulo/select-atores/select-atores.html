@@ -1,0 +1,8 @@
+<mat-form-field>
+  <mat-label>Atores</mat-label>
+  <mat-select [formControl]="formControl" multiple>
+    @for (item of atores; track item.nome) {
+    <mat-option [value]="item.nome">{{item.nome}}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>

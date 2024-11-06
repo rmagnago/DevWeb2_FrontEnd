@@ -3,12 +3,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { Diretor } from '../../models/diretor';
-import { DiretorService } from '../../services/diretor';
+import { Diretor } from '../../../models/diretor';
+import { DiretorService } from '../../../services/diretor';
 
 @Component({
     selector: 'select-diretor-titulo',
-    templateUrl: 'select-diretor-titulo.html',
+    templateUrl: 'select-diretor.html',
     standalone: true,
     imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule],
 })

@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Titulo } from '../../models/titulo';
 import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { SelectDiretorComponent } from '../../components/select-diretor-titulo/select-diretor-titulo';
-import { SelectClasseComponent } from '../../components/select-classe-titulo/select-classe-titulo';
+import { SelectDiretorComponent } from '../../components/titulo/select-diretor/select-diretor';
+import { SelectClasseComponent } from '../../components/titulo/select-classe/select-classe';
 import { Item } from '../../models/item';
 import { ItemService } from '../../services/item';
-import { SelectTituloItemComponent } from "../../components/select-titulo-item/select-titulo-item";
+import { SelectTituloItemComponent } from "../../components/item/select-titulo-item/select-titulo-item";
 
 @Component({
   selector: 'app-item-form',

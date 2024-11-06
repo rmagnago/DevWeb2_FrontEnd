@@ -4,9 +4,8 @@ import { Classe } from '../../models/classe';
 import { FormsModule } from '@angular/forms';
 
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { EditarAtorDialogComponent } from '../../components/editar-ator-dialog/editar-ator-dialog.component';
-import { EditarClasseDialogComponent } from '../../components/editar-classe-dialog/editar-classe-dialog.component';
 import { Titulo } from '../../models/titulo';
+import { EditarClasseDialogComponent } from '../../components/classe/editar-classe-dialog/editar-classe-dialog.component';
 
 @Component({
   selector: 'app-classe-form',
