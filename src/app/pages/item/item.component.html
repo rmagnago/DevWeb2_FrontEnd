@@ -21,12 +21,21 @@
         </div>
     </form>
 
-    <div class="">
+    <div class="resultado">
         <table>
             <thead>
                 <tr>
                     <th>
-                        Itens:
+                        Nº Série:
+                    </th>
+                    <th>
+                        Data:
+                    </th>
+                    <th>
+                        Tipo Item:
+                    </th>
+                    <th>
+                        Titulo:
                     </th>
                     <th>
                         Ações
@@ -38,10 +47,18 @@
                 @for (item of itens; track $index) {
                 <tr>
                     <td>
+                        {{ item.numSerie }}
+                    </td>
+                    <td>
+                        {{ item.dtAquisicao }}
+                    </td>
+                    <td>
+                        {{ item.tipoItem }}
+                    </td>
+                    <td>
                         {{ item.titulo }}
                     </td>
                     <td>
-                        <!-- <button id="editar" (click)="abrirDialog(item)">Editar</button> -->
                         <button id="excluir"
                             (click)="numSerie !== undefined ? apagarItem(item.numSerie!) : null">Excluir</button>
                     </td>

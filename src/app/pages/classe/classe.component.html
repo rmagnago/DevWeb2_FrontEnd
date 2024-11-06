@@ -1,58 +1,60 @@
-<form (ngSubmit)="salvarClasse()">
-    <div class="input">
-        <label for="title">Nome da Classe: </label>
-        <input type="text" placeholder="Digite o nome" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}">
+<div style="display: flex; flex-direction: row;">
+    <form (ngSubmit)="salvarClasse()">
+        <div class="input">
+            <label for="title">Nome da Classe: </label>
+            <input type="text" placeholder="Digite o nome" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}">
 
-        <label for="title">Valor: </label>
-        <input type="number" placeholder="Digite o nome" [(ngModel)]="valor" [ngModelOptions]="{standalone: true}">
+            <label for="title">Valor: </label>
+            <input type="number" placeholder="Digite o nome" [(ngModel)]="valor" [ngModelOptions]="{standalone: true}">
 
 
-        <label for="title">Prazo de Devolução: </label>
-        <input type="date" placeholder="Digite o nome" [(ngModel)]="prazoDevolucao"
-            [ngModelOptions]="{standalone: true}">
-        <button id="salvar">
-            Salvar
-        </button>
+            <label for="title">Prazo de Devolução: </label>
+            <input type="date" placeholder="Digite o nome" [(ngModel)]="prazoDevolucao"
+                [ngModelOptions]="{standalone: true}">
+            <button id="salvar">
+                Salvar
+            </button>
+        </div>
+    </form>
+
+    <div class="resultado">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Classes:
+                    </th>
+                    <th>
+                        Valor:
+                    </th>
+                    <th>
+                        Prazo de Devolução:
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (item of classes; track $index) {
+                <tr>
+                    <td>
+                        {{ item.nome }}
+                    </td>
+                    <td>
+                        {{ item.valor }}
+                    </td>
+                    <td>
+                        {{ item.prazoDevolucao }}
+                    </td>
+                    <td>
+                        <button id="editar" (click)="abrirDialog(item)">Editar</button>
+                        <button id="excluir" (click)="apagarClasse(item.id!)">Excluir</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
     </div>
-</form>
-
-<div class="">
-    <table>
-        <thead>
-            <tr>
-                <th>
-                    Classes:
-                </th>
-                <th>
-                    Valor:
-                </th>
-                <th>
-                    Prazo de Devolução:
-                </th>
-                <th>
-                    Ações
-                </th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @for (item of classes; track $index) {
-            <tr>
-                <td>
-                    {{ item.nome }}
-                </td>
-                <td>
-                    {{ item.valor }}
-                </td>
-                <td>
-                    {{ item.prazoDevolucao }}
-                </td>
-                <td>
-                    <button id="editar" (click)="abrirDialog(item)">Editar</button>
-                    <button id="excluir" (click)="apagarClasse(item.id!)">Excluir</button>
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
 </div>

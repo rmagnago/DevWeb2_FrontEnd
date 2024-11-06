@@ -39,19 +39,6 @@ export class TituloFormComponent implements OnInit {
     });
   }
 
-  // abrirDialog(titulo: Titulo): void {
-  //   const dialogRef = this.dialog.open(EditarTituloDialogComponent, {
-  //     width: '250px',
-  //     data: titulo,
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if (result) {
-  //       this.atualizarTitulo(result);
-  //     }
-  //   });
-  // }
-
   atualizarTitulo(titulo: Titulo): void {
     this.tituloService.atualizarTitulo(titulo, titulo.id!).subscribe(() => {
       alert('Titulo atualizado com sucesso!');

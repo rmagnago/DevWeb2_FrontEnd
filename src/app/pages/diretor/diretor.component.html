@@ -1,38 +1,40 @@
-<form (ngSubmit)="salvarDiretor()">
-    <div class="input">
-        <label for="title">Nome do Diretor: </label>
-        <input type="text" placeholder="Digite o nome" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}">
-        <button id="salvar">
-            Salvar
-        </button>
+<div style="display: flex; flex-direction: row;">
+    <form (ngSubmit)="salvarDiretor()">
+        <div class="input">
+            <label for="title">Nome do Diretor: </label>
+            <input type="text" placeholder="Digite o nome" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}">
+            <button id="salvar">
+                Salvar
+            </button>
+        </div>
+    </form>
+
+    <div class="resultado">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Diretores:
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (item of diretores; track $index) {
+                <tr>
+                    <td>
+                        {{ item.nome }}
+                    </td>
+                    <td>
+                        <button id="editar" (click)="abrirDialog(item)">Editar</button>
+                        <button id="excluir" (click)="apagarDiretor(item.id!)">Excluir</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
     </div>
-</form>
-
-<div class="">
-    <table>
-        <thead>
-            <tr>
-                <th>
-                    Diretores: 
-                </th>
-                <th>
-                    Ações
-                </th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @for (item of diretores; track $index) {
-            <tr>
-                <td>
-                    {{ item.nome }}
-                </td>
-                <td>
-                    <button id="editar" (click)="abrirDialog(item)">Editar</button>
-                    <button id="excluir" (click)="apagarDiretor(item.id!)">Excluir</button>
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
 </div>
