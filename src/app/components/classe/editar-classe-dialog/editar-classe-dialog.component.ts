@@ -5,7 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { Classe } from '../../models/classe';
+import { Classe } from '../../../models/classe';
 
 @Component({
   selector: 'app-editar-classe-dialog',
