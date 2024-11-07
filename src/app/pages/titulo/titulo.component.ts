@@ -31,6 +31,7 @@ export class TituloFormComponent implements OnInit {
   ngOnInit(): void {
     this.tituloService.getTitulos().subscribe((resposta) => {
       this.titulos = resposta;
+      console.log('Titulos carregados:', this.titulos);
     })
   }
 
@@ -57,8 +58,7 @@ export class TituloFormComponent implements OnInit {
   }
 
   salvarTitulo() {
-    console.log(this.nome)
-    if (this.nome) {
+    if (this.nome && this.diretor && this.classe && this.atores.length > 0) {
       const novoTitulo: Titulo = {
         nome: this.nome,
         ano: this.ano,
@@ -68,13 +68,35 @@ export class TituloFormComponent implements OnInit {
         diretor: this.diretor,
         classe: this.classe,
       };
+      console.log("Titulo: ", novoTitulo);
+
       this.tituloService.criarTitulo(novoTitulo).subscribe(() => {
         this.nome = '';
+        this.ano = 0;
+        this.sinopse = '';
+        this.categoria = '';
+        this.diretor = undefined!;
+        this.classe = undefined!;
+        this.atores = [];
         alert('Titulo salvo com sucesso!');
         this.ngOnInit();
+      }, (error) => {
+        console.error('Erro ao salvar título', error);
       });
     } else {
-      alert('Nome do titulo é obrigatório');
+      alert('Por favor, preencha todos os campos obrigatórios');
     }
   }
+
+  trackByTitulo(index: number, item: Titulo): string {
+    return item.id!;
+  }
+
+  formatarNomesAtores(atores: Ator[]): string {
+    return atores && atores.length > 0
+        ? atores.map(ator => ator.nome).join(', ')
+        : 'Sem atores';
+}
+
+
 }

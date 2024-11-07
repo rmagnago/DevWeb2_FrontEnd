@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,8 +13,10 @@ import { AtorService } from '../../../services/ator';
     imports: [MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule],
 })
 export class SelectAtoresComponent implements OnInit {
-    formControl = new FormControl('');
+    formControl = new FormControl<Ator[]>([]);
     atores: Ator[] = [];
+
+    @Output() atoresSelecionados = new EventEmitter<Ator[]>();
 
     constructor(private atorService: AtorService) { }
 
@@ -27,5 +29,9 @@ export class SelectAtoresComponent implements OnInit {
                 console.error('Erro ao carregar atores', error);
             }
         );
+
+        this.formControl.valueChanges.subscribe((atoresSelecionados) => {
+            this.atoresSelecionados.emit(atoresSelecionados || []);
+        });
     }
 }

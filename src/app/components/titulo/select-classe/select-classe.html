@@ -1,9 +1,9 @@
 <form>
     <mat-form-field style="width: 100%;">
         <mat-label>Classe</mat-label>
-        <mat-select [(ngModel)]="selectedClasse" name="classe">
+        <mat-select [(ngModel)]="selectedClasse" name="classe" (selectionChange)="onClasseChange()">
             @for (item of classes; track item) {
-            <mat-option [value]="item.nome">{{item.nome}}</mat-option>
+            <mat-option [value]="item">{{item.nome}}</mat-option>
             }
         </mat-select>
     </mat-form-field>

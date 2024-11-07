@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,6 +16,8 @@ export class SelectDiretorComponent implements OnInit {
     diretores: Diretor[] = [];
     selectedDiretor: Diretor | null = null;
 
+    @Output() diretorSelecionado = new EventEmitter<Diretor>();
+
     constructor(private diretorService: DiretorService) { }
 
     ngOnInit(): void {
@@ -27,5 +29,11 @@ export class SelectDiretorComponent implements OnInit {
                 console.error('Erro ao carregar diretores', error);
             }
         );
+    }
+
+    onDiretorChange(): void {
+        if (this.selectedDiretor) {
+            this.diretorSelecionado.emit(this.selectedDiretor);
+        }
     }
 }

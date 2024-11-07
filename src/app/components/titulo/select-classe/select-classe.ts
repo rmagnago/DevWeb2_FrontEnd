@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,6 +16,8 @@ export class SelectClasseComponent implements OnInit {
     selectedClasse: Classe | null = null;
     classes: Classe[] = [];
 
+    @Output() classeSelecionado = new EventEmitter<Classe>();
+
     constructor(private classeService: ClasseService) { }
 
     ngOnInit(): void {
@@ -27,5 +29,11 @@ export class SelectClasseComponent implements OnInit {
                 console.error('Erro ao carregar classes', error);
             }
         );
+    }
+
+    onClasseChange(): void {
+        if (this.selectedClasse) {
+            this.classeSelecionado.emit(this.selectedClasse);
+        }
     }
 }

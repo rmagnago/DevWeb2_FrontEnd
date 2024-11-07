@@ -18,11 +18,11 @@
             <input type="text" placeholder="Digite a categoria" [(ngModel)]="categoria"
                 [ngModelOptions]="{standalone: true}">
 
-            <select-diretor-titulo />
+            <select-diretor-titulo (diretorSelecionado)="diretor = $event" />
 
-            <select-classe-titulo />
+            <select-classe-titulo (classeSelecionado)="classe = $event" />
 
-            <select-atores-titulo />
+            <select-atores-titulo (atoresSelecionados)="atores = $event" />
 
             <button id="salvar">
                 Salvar
@@ -34,51 +34,28 @@
         <table>
             <thead>
                 <tr>
-                    <th>
-                        Titulos:
-                    </th>
-                    <th>
-                        Ano:
-                    </th>
-                    <th>
-                        Sinopse:
-                    </th>
-                    <th>
-                        Categoria:
-                    </th>
-                    <th>
-                        Diretor:
-                    </th>
-                    <th>
-                        Classe:
-                    </th>
-                    <th>
-                        Ações
-                    </th>
+                    <th>Titulos:</th>
+                    <th>Ano:</th>
+                    <th>Sinopse:</th>
+                    <th>Categoria:</th>
+                    <th>Diretor:</th>
+                    <th>Classe:</th>
+                    <th>Atores:</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
 
             <tbody>
                 @for (item of titulos; track $index) {
                 <tr>
-                    <td>
-                        {{ item.nome }}
-                    </td>
-                    <td>
-                        {{ item.ano }}
-                    </td>
-                    <td>
-                        {{ item.sinopse }}
-                    </td>
-                    <td>
-                        {{ item.categoria }}
-                    </td>
-                    <td>
-                        {{ item.diretor }}
-                    </td>
-                    <td>
-                        {{ item.classe }}
-                    </td>
+
+                    <td>{{ item.nome }}</td>
+                    <td>{{ item.ano }}</td>
+                    <td>{{ item.sinopse }}</td>
+                    <td>{{ item.categoria }}</td>
+                    <td>{{ item.diretor.nome }}</td>
+                    <td>{{ item.classe.nome }}</td>
+                    <td>{{ formatarNomesAtores(item.atores) }}</td>
 
                     <td>
                         <button id="excluir" (click)="apagarTitulo(item.id!)">Excluir</button>
