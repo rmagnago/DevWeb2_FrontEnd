@@ -64,6 +64,7 @@ export class TituloFormComponent implements OnInit {
         alert('Titulo salvo com sucesso!');
         this.ngOnInit();
         this.selectAtoresComponent.formControl.setValue([]);
+        console.log('Titulo: ', novoTitulo);
       }, (error) => {
         console.error('Erro ao salvar título', error);
       });
@@ -93,6 +94,7 @@ export class TituloFormComponent implements OnInit {
   }
 
   formatarNomesAtores(atores: Ator[]): string {
+    console.log('Atores recebidos:', atores);
     return atores && atores.length > 0
       ? atores.map(ator => ator.nome).join(', ')
       : 'Sem atores';
