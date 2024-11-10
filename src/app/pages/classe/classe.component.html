@@ -46,7 +46,7 @@
                         {{ item.valor }}
                     </td>
                     <td>
-                        {{ item.prazoDevolucao }}
+                        {{ formatadorData(item.prazoDevolucao) }}
                     </td>
                     <td>
                         <button id="editar" (click)="abrirDialog(item)">Editar</button>

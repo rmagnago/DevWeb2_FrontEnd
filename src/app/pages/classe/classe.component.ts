@@ -17,7 +17,7 @@ import { EditarClasseDialogComponent } from '../../components/classe/editar-clas
 export class ClasseFormComponent implements OnInit {
   nome: string = '';
   valor: number = 0;
-  prazoDevolucao: number = 0;
+  prazoDevolucao: Date = null!;
   titulos!: Titulo[];
   classes!: Classe[];
 
@@ -71,12 +71,18 @@ export class ClasseFormComponent implements OnInit {
       this.ClasseService.criarClasse(novoClasse).subscribe(() => {
         this.nome = '';
         this.valor = 0;
-        this.prazoDevolucao = 0;
+        this.prazoDevolucao = null!;
         alert('Classe salvo com sucesso!');
         this.ngOnInit();
       });
     } else {
       alert('Campos obrigatórios não foram preenchidos');
     }
+  }
+
+  formatadorData(data: Date): string {
+    const novaData = new Date(data);
+    novaData.setDate(novaData.getDate() + 1);
+    return novaData.toLocaleDateString();
   }
 }
