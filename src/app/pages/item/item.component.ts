@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Titulo } from '../../models/titulo';
 import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { SelectDiretorComponent } from '../../components/titulo/select-diretor/select-diretor';
-import { SelectClasseComponent } from '../../components/titulo/select-classe/select-classe';
 import { Item } from '../../models/item';
 import { ItemService } from '../../services/item';
 import { SelectTituloItemComponent } from "../../components/item/select-titulo-item/select-titulo-item";
@@ -12,7 +10,7 @@ import { SelectTituloItemComponent } from "../../components/item/select-titulo-i
   selector: 'app-item-form',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css'],
-  imports: [FormsModule, MatDialogModule, SelectDiretorComponent, SelectClasseComponent, SelectTituloItemComponent],
+  imports: [FormsModule, MatDialogModule, SelectTituloItemComponent],
   standalone: true
 })
 export class ItemFormComponent implements OnInit {
@@ -52,8 +50,7 @@ export class ItemFormComponent implements OnInit {
   }
 
   salvarItem() {
-    console.log(this.numSerie)
-    if (this.numSerie) {
+    if (this.numSerie && this.tipoItem && this.titulo && this.numSerie !== 0) {
       const novoItem: Item = {
         dtAquisicao: this.dtAquisicao,
         tipoItem: this.tipoItem,
@@ -66,7 +63,13 @@ export class ItemFormComponent implements OnInit {
         this.ngOnInit();
       });
     } else {
-      alert('Nome do item é obrigatório');
+      alert('Preencha todos os campos!');
     }
+  }
+
+  formatadorData(data: Date): string {
+    const novaData = new Date(data);
+    novaData.setDate(novaData.getDate() + 1);
+    return novaData.toLocaleDateString();
   }
 }

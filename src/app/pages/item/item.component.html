@@ -29,7 +29,7 @@
                         Nº Série:
                     </th>
                     <th>
-                        Data:
+                        Data de Aquisição:
                     </th>
                     <th>
                         Tipo Item:
@@ -50,7 +50,7 @@
                         {{ item.numSerie }}
                     </td>
                     <td>
-                        {{ item.dtAquisicao }}
+                        {{ formatadorData(item.dtAquisicao) }}
                     </td>
                     <td>
                         {{ item.tipoItem }}
@@ -59,8 +59,7 @@
                         {{ item.titulo }}
                     </td>
                     <td>
-                        <button id="excluir"
-                            (click)="numSerie !== undefined ? apagarItem(item.numSerie!) : null">Excluir</button>
+                        <button id="excluir" (click)="apagarItem(item.numSerie!)">Excluir</button>
                     </td>
                 </tr>
                 }
