@@ -5,6 +5,7 @@ import { Item } from '../../models/item';
 import { ItemService } from '../../services/item';
 import { SelectTituloItemComponent } from "../../components/item/select-titulo-item/select-titulo-item";
 import { FormsModule } from '@angular/forms';
+import { EditarItemDialogComponent } from '../../components/item/editar-item-dialog/editar-item-dialog.component';
 
 @Component({
   selector: 'app-item-form',
@@ -31,6 +32,20 @@ export class ItemFormComponent implements OnInit {
   carregarItens(): void {
     this.itemService.getItens().subscribe((resposta) => {
       this.itens = resposta;
+    });
+  }
+
+  abrirDialog(item: Item): void {
+    const dialogRef = this.dialog.open(EditarItemDialogComponent, {
+      width: '350px',
+      height: '550px',
+      data: item,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.atualizarItem(result);
+      }
     });
   }
 

@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Editar Item</h2>
+<mat-dialog-content>
+
+  <mat-form-field>
+    <mat-label>Número de Série</mat-label>
+    <input matInput [(ngModel)]="data.numSerie">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Tipo Item</mat-label>
+    <input matInput [(ngModel)]="data.tipoItem">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Data de Aquisição</mat-label>
+    <input matInput [(ngModel)]="data.dtAquisicao">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Titulo</mat-label>
+    <input matInput [(ngModel)]="data.titulo">
+  </mat-form-field>
+  
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data">Salvar</button>
+</mat-dialog-actions>

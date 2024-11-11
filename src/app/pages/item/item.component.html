@@ -57,6 +57,7 @@
                         {{ item.titulo.nome }}
                     </td>
                     <td>
+                        <button id="editar" (click)="abrirDialog(item)">Editar</button>
                         <button id="excluir" (click)="apagarItem(item.id!)">Excluir</button>
                     </td>
                 </tr>
