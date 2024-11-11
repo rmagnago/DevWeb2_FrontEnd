@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Editar Titulo</h2>
+<mat-dialog-content>
+
+  <mat-form-field>
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)]="data.nome">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Ano</mat-label>
+    <input matInput [(ngModel)]="data.ano">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Sinopse</mat-label>
+    <input matInput [(ngModel)]="data.sinopse">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Categoria</mat-label>
+    <input matInput [(ngModel)]="data.categoria">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Diretor</mat-label>
+    <input matInput [(ngModel)]="data.diretor">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Classe</mat-label>
+    <input matInput [(ngModel)]="data.classe">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Atores</mat-label>
+    <input matInput [(ngModel)]="data.atores">
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data">Salvar</button>
+</mat-dialog-actions>

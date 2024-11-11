@@ -58,6 +58,7 @@
                     <td>{{ formatarNomesAtores(item.atores) }}</td>
 
                     <td>
+                        <button id="editar" (click)="abrirDialog(item)">Editar</button>
                         <button id="excluir" (click)="apagarTitulo(item.id!)">Excluir</button>
                     </td>
                 </tr>

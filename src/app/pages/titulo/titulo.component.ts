@@ -9,6 +9,7 @@ import { Classe } from '../../models/classe';
 import { SelectDiretorComponent } from '../../components/titulo/select-diretor/select-diretor';
 import { SelectClasseComponent } from '../../components/titulo/select-classe/select-classe';
 import { SelectAtoresComponent } from "../../components/titulo/select-atores/select-atores";
+import { EditarTituloDialogComponent } from '../../components/titulo/editar-titulo-dialog/editar-titulo-dialog';
 
 @Component({
   selector: 'app-titulo-form',
@@ -41,6 +42,20 @@ export class TituloFormComponent implements OnInit {
     });
   }
 
+  abrirDialog(titulo: Titulo): void {
+    const dialogRef = this.dialog.open(EditarTituloDialogComponent, {
+      width: '350px',
+      height: '550px',
+      data: titulo,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.atualizarTitulo(result);
+      }
+    });
+  }
+
   salvarTitulo() {
     if (this.nome && this.diretor && this.classe && this.atores.length > 0) {
       const novoTitulo: Titulo = {
@@ -64,7 +79,6 @@ export class TituloFormComponent implements OnInit {
         alert('Titulo salvo com sucesso!');
         this.ngOnInit();
         this.selectAtoresComponent.formControl.setValue([]);
-        console.log('Titulo: ', novoTitulo);
       }, (error) => {
         console.error('Erro ao salvar título', error);
       });
@@ -94,7 +108,6 @@ export class TituloFormComponent implements OnInit {
   }
 
   formatarNomesAtores(atores: Ator[]): string {
-    console.log('Atores recebidos:', atores);
     return atores && atores.length > 0
       ? atores.map(ator => ator.nome).join(', ')
       : 'Sem atores';
