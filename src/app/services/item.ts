@@ -15,7 +15,7 @@ export class ItemService {
         return this.http.get<Item[]>(this.apiUrl);
     }
 
-    getItemById(id: number): Observable<Item> {
+    getItemById(id: string): Observable<Item> {
         const url = `${this.apiUrl}/${id}`;
         return this.http.get<Item>(url);
     }
@@ -25,12 +25,12 @@ export class ItemService {
         return this.http.post<Item>(url, item);
     }
 
-    atualizarItem(item: Item, id: number): Observable<Item> {
+    atualizarItem(item: Item, id: string): Observable<Item> {
         const url = `${this.apiUrl}/${id}`;
         return this.http.put<Item>(url, item);
     }
 
-    deletarItem(id: number): Observable<void> {
+    deletarItem(id: string): Observable<void> {
         const url = `${this.apiUrl}/${id}`;
         return this.http.delete<void>(url);
     }

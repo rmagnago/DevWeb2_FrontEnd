@@ -2,18 +2,16 @@
     <form (ngSubmit)="salvarItem()">
 
         <div class="input">
+            <label for="numSerie">Número de Série: </label>
+            <input type="number" placeholder="Digite o número" [(ngModel)]="numSerie" name="numSerie" required>
 
-            <label for="title">Número de Serie: </label>
-            <input type="number" placeholder="Digite o numero" [(ngModel)]="numSerie"
-                [ngModelOptions]="{standalone: true}">
+            <label for="dtAquisicao">Data de Aquisição: </label>
+            <input type="date" [(ngModel)]="dtAquisicao" name="dtAquisicao" required>
 
-            <label for="title">Data de Aquisicao: </label>
-            <input type="date" [(ngModel)]="dtAquisicao" [ngModelOptions]="{standalone: true}">
+            <label for="tipoItem">Tipo de Item: </label>
+            <input type="text" placeholder="Tipo do item" [(ngModel)]="tipoItem" name="tipoItem" required>
 
-            <label for="title">Tipo item: </label>
-            <input type="text" placeholder="Tipo do item" [(ngModel)]="tipoItem" [ngModelOptions]="{standalone: true}">
-
-            <select-titulo-item />
+            <select-titulo-item (tituloSelecionado)="titulo = $event" />
 
             <button id="salvar">
                 Salvar
@@ -56,10 +54,10 @@
                         {{ item.tipoItem }}
                     </td>
                     <td>
-                        {{ item.titulo }}
+                        {{ item.titulo.nome }}
                     </td>
                     <td>
-                        <button id="excluir" (click)="apagarItem(item.numSerie!)">Excluir</button>
+                        <button id="excluir" (click)="apagarItem(item.id!)">Excluir</button>
                     </td>
                 </tr>
                 }

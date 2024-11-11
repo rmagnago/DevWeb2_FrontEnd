@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,6 +16,8 @@ export class SelectTituloItemComponent implements OnInit {
     selectedTitulo: Titulo | null = null;
     titulos: Titulo[] = [];
 
+    @Output() tituloSelecionado = new EventEmitter<Titulo>();
+
     constructor(private tituloService: TituloService) { }
 
     ngOnInit(): void {
@@ -27,5 +29,11 @@ export class SelectTituloItemComponent implements OnInit {
                 console.error('Erro ao carregar titulos', error);
             }
         );
+    }
+
+    onTituloChange(): void {
+        if (this.selectedTitulo) {
+            this.tituloSelecionado.emit(this.selectedTitulo);
+        }
     }
 }
