@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TituloService } from '../../services/titulo';
 import { Titulo } from '../../models/titulo';
 import { FormsModule } from '@angular/forms';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Ator } from '../../models/ator';
 import { Diretor } from '../../models/diretor';
 import { Classe } from '../../models/classe';
@@ -15,19 +15,21 @@ import { EditarTituloDialogComponent } from '../../components/titulo/editar-titu
   selector: 'app-titulo-form',
   templateUrl: './titulo.component.html',
   styleUrls: ['./titulo.component.css'],
-  imports: [FormsModule, MatDialogModule, SelectDiretorComponent, SelectClasseComponent, SelectAtoresComponent],
+  imports: [FormsModule, SelectDiretorComponent, SelectClasseComponent, SelectAtoresComponent],
   standalone: true
 })
 export class TituloFormComponent implements OnInit {
   @ViewChild(SelectAtoresComponent) selectAtoresComponent!: SelectAtoresComponent;
+  @ViewChild(SelectDiretorComponent) selectDiretorComponent!: SelectDiretorComponent;
+  @ViewChild(SelectClasseComponent) selectClasseComponent!: SelectClasseComponent
 
   nome: string = '';
   ano: number = 0;
   sinopse: string = '';
   categoria: string = '';
   atores: Ator[] = [];
-  diretor!: Diretor;
-  classe!: Classe;
+  diretor!: Diretor | null;
+  classe!: Classe | null;
   titulos!: Titulo[];
 
   constructor(private tituloService: TituloService, public dialog: MatDialog) { }
@@ -88,10 +90,19 @@ export class TituloFormComponent implements OnInit {
   }
 
   atualizarTitulo(titulo: Titulo): void {
-    this.tituloService.atualizarTitulo(titulo, titulo.id!).subscribe(() => {
-      alert('Titulo atualizado com sucesso!');
-      this.carregarTitulos();
-    });
+    if (titulo.nome) {
+      this.tituloService.atualizarTitulo(titulo, titulo.id!).subscribe(
+        () => {
+          alert('Titulo atualizado com sucesso!');
+          this.carregarTitulos();
+        }, (error) => {
+          console.error('Erro ao atualizar titulo:', error);
+          alert('Erro ao atualizar o titulo!');
+        }
+      );
+    } else {
+      alert('Nome inválido!');
+    }
   }
 
   apagarTitulo(id: string): void {

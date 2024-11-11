@@ -1,11 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Ator } from '../../../models/ator';
 import { AtorService } from '../../../services/ator';
 
-/** @title Select with multiple selection */
 @Component({
     selector: 'select-atores-titulo',
     templateUrl: 'select-atores.html',
@@ -13,7 +12,7 @@ import { AtorService } from '../../../services/ator';
     imports: [MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule],
 })
 export class SelectAtoresComponent implements OnInit {
-    formControl = new FormControl<Ator[]>([]);
+    @Input() formControl = new FormControl<Ator[]>([]);
     atores: Ator[] = [];
 
     @Output() atoresSelecionados = new EventEmitter<Ator[]>();
@@ -24,6 +23,10 @@ export class SelectAtoresComponent implements OnInit {
         this.atorService.getAtores().subscribe(
             (data) => {
                 this.atores = data;
+
+                if (this.formControl) {
+                    this.formControl.setValue(this.formControl.value || []);
+                }
             },
             (error) => {
                 console.error('Erro ao carregar atores', error);

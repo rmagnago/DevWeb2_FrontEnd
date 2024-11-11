@@ -21,20 +21,12 @@
     <input matInput [(ngModel)]="data.categoria">
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Diretor</mat-label>
-    <input matInput [(ngModel)]="data.diretor">
-  </mat-form-field>
+  <select-diretor-titulo (diretorSelecionado)="data.diretor = $event" [selectedDiretor]="data.diretor" />
 
-  <mat-form-field>
-    <mat-label>Classe</mat-label>
-    <input matInput [(ngModel)]="data.classe">
-  </mat-form-field>
+  <select-classe-titulo (classeSelecionado)="data.classe = $event" [selectedClasse]="data.classe" />
 
-  <mat-form-field>
-    <mat-label>Atores</mat-label>
-    <input matInput [(ngModel)]="data.atores">
-  </mat-form-field>
+  <!-- <select-atores-titulo (atoresSelecionados)="data.atores = $event" [formControl]="atoresFormControl" /> -->
+
 
 </mat-dialog-content>
 <mat-dialog-actions>

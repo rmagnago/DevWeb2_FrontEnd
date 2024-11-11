@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,7 +13,7 @@ import { ClasseService } from '../../../services/classe';
     imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule],
 })
 export class SelectClasseComponent implements OnInit {
-    selectedClasse: Classe | null = null;
+    @Input() selectedClasse: Classe | null = null;
     classes: Classe[] = [];
 
     @Output() classeSelecionado = new EventEmitter<Classe>();
@@ -24,6 +24,12 @@ export class SelectClasseComponent implements OnInit {
         this.classeService.getClasses().subscribe(
             (data) => {
                 this.classes = data;
+
+                if (this.selectedClasse) {
+                    this.selectedClasse = this.classes.find(
+                        (classe) => classe.id === this.selectedClasse?.id
+                    ) || null;
+                }
             },
             (error) => {
                 console.error('Erro ao carregar classes', error);

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,8 +13,8 @@ import { DiretorService } from '../../../services/diretor';
     imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule],
 })
 export class SelectDiretorComponent implements OnInit {
+    @Input() selectedDiretor: Diretor | null = null;
     diretores: Diretor[] = [];
-    selectedDiretor: Diretor | null = null;
 
     @Output() diretorSelecionado = new EventEmitter<Diretor>();
 
@@ -24,6 +24,12 @@ export class SelectDiretorComponent implements OnInit {
         this.diretorService.getDiretores().subscribe(
             (data) => {
                 this.diretores = data;
+
+                if (this.selectedDiretor) {
+                    this.selectedDiretor = this.diretores.find(
+                        (diretor) => diretor.id === this.selectedDiretor?.id
+                    ) || null;
+                }
             },
             (error) => {
                 console.error('Erro ao carregar diretores', error);
