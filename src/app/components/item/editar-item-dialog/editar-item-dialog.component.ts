@@ -6,12 +6,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { Item } from '../../../models/item';
+import { SelectTituloItemComponent } from '../select-titulo-item/select-titulo-item';
 
 @Component({
   selector: 'app-editar-item-dialog',
   templateUrl: './editar-item-dialog.component.html',
   styleUrls: ['./editar-item-dialog.css'],
-  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule],
+  imports: [
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    SelectTituloItemComponent
+  ],
   standalone: true,
 })
 export class EditarItemDialogComponent {

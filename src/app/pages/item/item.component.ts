@@ -39,7 +39,7 @@ export class ItemFormComponent implements OnInit {
     const dialogRef = this.dialog.open(EditarItemDialogComponent, {
       width: '350px',
       height: '550px',
-      data: item,
+      data: { ...item },
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -51,14 +51,21 @@ export class ItemFormComponent implements OnInit {
 
   atualizarItem(item: Item): void {
     if (item.numSerie) {
-      this.itemService.atualizarItem(item, item.id!).subscribe(() => {
-        alert('Item atualizado com sucesso!');
-        this.carregarItens();
-      });
+      this.itemService.atualizarItem(item, item.id!).subscribe(
+        () => {
+          alert('Item atualizado com sucesso!');
+          this.carregarItens();
+        },
+        (error) => {
+          console.error('Erro ao atualizar item:', error);
+          alert('Erro ao atualizar o item!');
+        }
+      );
     } else {
       alert('Número de série inválido!');
     }
   }
+  
 
   apagarItem(id: string): void {
     if (confirm('Tem certeza que deseja apagar este item?')) {
@@ -70,7 +77,6 @@ export class ItemFormComponent implements OnInit {
   }
 
   salvarItem(): void {
-    console.log(this.numSerie, this.dtAquisicao, this.tipoItem, this.titulo);
     if (this.numSerie && this.tipoItem && this.titulo && this.dtAquisicao) {
       const novoItem: Item = {
         numSerie: this.numSerie,

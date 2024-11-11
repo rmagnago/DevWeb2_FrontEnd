@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,7 +13,7 @@ import { TituloService } from '../../../services/titulo';
     imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule],
 })
 export class SelectTituloItemComponent implements OnInit {
-    selectedTitulo: Titulo | null = null;
+    @Input() selectedTitulo: Titulo | null = null;
     titulos: Titulo[] = [];
 
     @Output() tituloSelecionado = new EventEmitter<Titulo>();
@@ -24,6 +24,13 @@ export class SelectTituloItemComponent implements OnInit {
         this.tituloService.getTitulos().subscribe(
             (data) => {
                 this.titulos = data;
+
+                // Define o título inicial no select, caso haja um
+                if (this.selectedTitulo) {
+                    this.selectedTitulo = this.titulos.find(
+                        (titulo) => titulo.id === this.selectedTitulo?.id
+                    ) || null;
+                }
             },
             (error) => {
                 console.error('Erro ao carregar titulos', error);
