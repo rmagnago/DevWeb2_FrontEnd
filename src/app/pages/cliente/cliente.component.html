@@ -1,1 +1,46 @@
+<div style="display: flex; flex-direction: row;">
+    <form (ngSubmit)="salvarCliente()">
+        <div class="input">
+            <label for="title">Nome do Cliente: </label>
+            <input type="text" placeholder="Digite o Nº de Inscrição" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}">
+            <label for="title">Nome do Cliente: </label>
+            <input type="text" placeholder="Digite o nome" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}">
+            <label for="title">Nome do Cliente: </label>
+            <input type="text" placeholder="Digite o nome" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}">
+            <label for="title">Nome do Cliente: </label>
+            <input type="text" placeholder="Digite o nome" [(ngModel)]="nome" [ngModelOptions]="{standalone: true}">
+            <button id="salvar">
+                Salvar
+            </button>
+        </div>
+    </form>
 
+    <div class="resultado">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Clientes:
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (item of clientes; track $index) {
+                <tr>
+                    <td>
+                        {{ item.nome }}
+                    </td>
+                    <td>
+                        <button id="editar" (click)="abrirDialog(item)">Editar</button>
+                        <button id="excluir" (click)="apagarCliente(item.id!)">Excluir</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
