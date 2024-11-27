@@ -4,6 +4,7 @@ import { ClasseFormComponent } from './pages/classe/classe.component';
 import { DiretorFormComponent } from './pages/diretor/diretor.component';
 import { TituloFormComponent } from './pages/titulo/titulo.component';
 import { ItemFormComponent } from './pages/item/item.component';
+import { ClienteFormComponent } from './pages/cliente/cliente.component';
 
 export const routes: Routes = [
     {
@@ -29,6 +30,10 @@ export const routes: Routes = [
     {
         path: "item",
         component: ItemFormComponent
+    },
+    {
+        path: "cliente",
+        component: ClienteFormComponent
     },
 
 ];
