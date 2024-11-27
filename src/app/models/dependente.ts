@@ -1,6 +1,6 @@
-import { CLiente } from "./cliente";
+import { Cliente } from "./cliente";
 
-export interface Dependente extends CLiente {
+export interface Dependente extends Cliente {
     id?: string;
     Socio: string;
 }

@@ -14,7 +14,10 @@ import { Cliente } from '../../models/cliente';
 })
 export class ClienteFormComponent implements OnInit {
     nome: string = '';
-    titulos!: Titulo[];
+    numInscricao: number = 0;
+    dtNascimento: Date = null!;
+    sexo: string = '';
+    ativo: boolean = false;
     clientes!: Cliente[];
 
     constructor(private clienteService: ClienteService, public dialog: MatDialog) { }
@@ -31,16 +34,16 @@ export class ClienteFormComponent implements OnInit {
     }
 
     abrirDialog(cliente: Cliente): void {
-        const dialogRef = this.dialog.open(EditarClienteDialogComponent, {
-            width: '250px',
-            data: cliente,
-        });
+        // const dialogRef = this.dialog.open(EditarClienteDialogComponent, {
+        //     width: '250px',
+        //     data: cliente,
+        // });
 
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                this.atualizarCliente(result);
-            }
-        });
+        // dialogRef.afterClosed().subscribe(result => {
+        //     if (result) {
+        //         this.atualizarCliente(result);
+        //     }
+        // });
     }
 
     atualizarCliente(cliente: Cliente): void {
@@ -62,9 +65,13 @@ export class ClienteFormComponent implements OnInit {
     salvarCliente() {
         console.log(this.nome)
         if (this.nome) {
-            const novoCliente: Cliente = { nome: this.nome, titulos: this.titulos };
+            const novoCliente: Cliente = { nome: this.nome, numInscricao: this.numInscricao, dtNascimento: this.dtNascimento, sexo: this.sexo, ativo: this.ativo };
             this.clienteService.criarCliente(novoCliente).subscribe(() => {
                 this.nome = '';
+                this.numInscricao = 0;
+                this.dtNascimento = null!;
+                this.sexo = '';
+                this.ativo = false;
                 alert('Cliente salvo com sucesso!');
                 this.ngOnInit();
             });

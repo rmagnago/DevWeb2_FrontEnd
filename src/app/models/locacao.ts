@@ -1,4 +1,4 @@
-import { CLiente } from "./cliente";
+import { Cliente } from "./cliente";
 import { Item } from "./item";
 
 export interface Locacao {
@@ -8,6 +8,6 @@ export interface Locacao {
     dtDevolucaoEfetiva: Date;
     multa: number;
     valor: number;
-    cliente: CLiente;
+    cliente: Cliente;
     item: Item;
 }

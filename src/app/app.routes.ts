@@ -5,11 +5,12 @@ import { DiretorFormComponent } from './pages/diretor/diretor.component';
 import { TituloFormComponent } from './pages/titulo/titulo.component';
 import { ItemFormComponent } from './pages/item/item.component';
 import { ClienteFormComponent } from './pages/cliente/cliente.component';
+import { LocacaoFormComponent } from './pages/locacao/locacao.component';
 
 export const routes: Routes = [
     {
         path: "",
-        component: AtorFormComponent
+        component: LocacaoFormComponent
     },
     {
         path: "ator",
@@ -34,6 +35,10 @@ export const routes: Routes = [
     {
         path: "cliente",
         component: ClienteFormComponent
+    },
+    {
+        path: "locacao",
+        component: LocacaoFormComponent
     },
 
 ];

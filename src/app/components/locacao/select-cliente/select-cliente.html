@@ -1,0 +1,10 @@
+<form>
+    <mat-form-field style="width: 100%;">
+        <mat-label>Cliente</mat-label>
+        <mat-select [(ngModel)]="selectedCliente" name="clientes" (selectionChange)="onClienteChange()">
+            @for (item of clientes; track item) {
+            <mat-option [value]="item">{{item.nome}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+</form>
