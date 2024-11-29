@@ -4,12 +4,13 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Titulo } from '../../models/titulo';
 import { ClienteService } from '../../services/cliente';
 import { Cliente } from '../../models/cliente';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
     selector: 'app-cliente-form',
     templateUrl: './cliente.component.html',
     styleUrls: ['./cliente.component.css'],
-    imports: [FormsModule, MatDialogModule],
+    imports: [FormsModule, MatDialogModule, MatTabsModule],
     standalone: true
 })
 export class ClienteFormComponent implements OnInit {
@@ -18,6 +19,9 @@ export class ClienteFormComponent implements OnInit {
     dtNascimento: Date = null!;
     sexo: string = '';
     ativo: boolean = false;
+    cpf: string = '';
+    telefone: string = '';
+    endereco: string = '';
     clientes!: Cliente[];
 
     constructor(private clienteService: ClienteService, public dialog: MatDialog) { }
