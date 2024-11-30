@@ -1,6 +1,6 @@
 <mat-form-field style="width: 100%;">
     <mat-label>Selecione o sexo</mat-label>
-    <mat-select [disabled]="disableSelect.value">
+    <mat-select [(ngModel)]="selectedSexo" name="sexo" (selectionChange)="onSexoChange()">
         <mat-option value="option1">Feminino</mat-option>
         <mat-option value="option2">Masculino</mat-option>
     </mat-select>

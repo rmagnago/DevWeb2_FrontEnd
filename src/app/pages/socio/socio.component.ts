@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { SocioService } from '../../services/socio';
@@ -14,11 +14,13 @@ import { SexoComponent } from '../../components/cliente/select-sexo/select-sexo.
   standalone: true
 })
 export class SocioFormComponent implements OnInit {
+  @ViewChild(SexoComponent) selectSexo!: SexoComponent;
+
   nome: string = '';
   numInscricao: number = 0;
   dtNascimento: Date = null!;
   sexo: string = '';
-  ativo: boolean = false;
+  ativo: boolean = true;
   cpf: string = '';
   telefone: string = '';
   endereco: string = '';
@@ -69,20 +71,36 @@ export class SocioFormComponent implements OnInit {
   salvarSocio() {
     if (this.numInscricao) {
       const novoSocio: Socio = {
-        nome: this.nome, numInscricao: this.numInscricao, dtNascimento: this.dtNascimento, sexo: this.sexo, ativo: true, cpf: this.cpf, telefone: this.telefone, endereco: this.endereco
+        nome: this.nome,
+        numInscricao: this.numInscricao,
+        dtNascimento: this.dtNascimento,
+        sexo: this.sexo,
+        ativo: true,
+        cpf: this.cpf,
+        telefone: this.telefone,
+        endereco: this.endereco
       };
+      console.log(novoSocio);
       this.socioService.criarSocio(novoSocio).subscribe(() => {
         this.nome = '';
         this.numInscricao = 0;
-        this.dtNascimento = null!;
+        this.dtNascimento = new Date();
         this.sexo = '';
-        this.ativo = false;
+        this.ativo = true;
+        this.cpf = '';
+        this.telefone = '';
+        this.endereco = '';
         alert('Socio salvo com sucesso!');
-        console.log(novoSocio);
-        this.ngOnInit();
+        this.carregarSocios();
       });
     } else {
       alert('Nome do Socio é obrigatório');
     }
+  }
+
+  formatadorData(data: Date): string {
+    const novaData = new Date(data);
+    novaData.setDate(novaData.getDate() + 1);
+    return novaData.toLocaleDateString();
   }
 }
