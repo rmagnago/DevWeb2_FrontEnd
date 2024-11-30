@@ -4,14 +4,15 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Dependente } from '../../models/dependente';
 import { Socio } from '../../models/socio';
 import { DependenteService } from '../../services/dependente';
-import { SexoComponent } from "../../components/cliente/sexo/sexo.component";
+import { SexoComponent } from '../../components/cliente/select-sexo/select-sexo.component';
+import { SelectSocioComponent } from "../../components/dependente/select-socio/select-socio.component";
 
 @Component({
   selector: 'app-dependente',
   templateUrl: './dependente.component.html',
   styleUrl: './dependente.component.css',
   standalone: true,
-  imports: [FormsModule, MatDialogModule, SexoComponent],
+  imports: [FormsModule, MatDialogModule, SexoComponent, SelectSocioComponent],
 })
 export class DependenteComponent implements OnInit {
 

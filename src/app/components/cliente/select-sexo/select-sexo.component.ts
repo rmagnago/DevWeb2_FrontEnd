@@ -15,8 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule],
-  templateUrl: './sexo.component.html',
-  styleUrl: './sexo.component.css'
+  templateUrl: './select-sexo.component.html',
 })
 export class SexoComponent {
   disableSelect = new FormControl(false);

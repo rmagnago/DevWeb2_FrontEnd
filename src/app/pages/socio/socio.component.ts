@@ -4,12 +4,13 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { SocioService } from '../../services/socio';
 import { Socio } from '../../models/socio';
 import { MatTabsModule } from '@angular/material/tabs';
+import { SexoComponent } from '../../components/cliente/select-sexo/select-sexo.component';
 
 @Component({
   selector: 'app-socio-form',
   templateUrl: './socio.component.html',
   styleUrls: ['./socio.component.css'],
-  imports: [FormsModule, MatDialogModule, MatTabsModule],
+  imports: [FormsModule, MatDialogModule, MatTabsModule, SexoComponent],
   standalone: true
 })
 export class SocioFormComponent implements OnInit {
