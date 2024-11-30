@@ -4,9 +4,10 @@ import { ClasseFormComponent } from './pages/classe/classe.component';
 import { DiretorFormComponent } from './pages/diretor/diretor.component';
 import { TituloFormComponent } from './pages/titulo/titulo.component';
 import { ItemFormComponent } from './pages/item/item.component';
-import { ClienteFormComponent } from './pages/cliente/cliente.component';
+import { SocioFormComponent } from './pages/socio/socio.component';
 import { LocacaoFormComponent } from './pages/locacao/locacao.component';
 import { DevolucaoComponent } from './pages/devolucao/devolucao.component';
+import { DependenteComponent } from './pages/dependente/dependente.component';
 
 export const routes: Routes = [
     {
@@ -34,8 +35,8 @@ export const routes: Routes = [
         component: ItemFormComponent
     },
     {
-        path: "cliente",
-        component: ClienteFormComponent
+        path: "socio",
+        component: SocioFormComponent
     },
     {
         path: "locacao",
@@ -45,5 +46,8 @@ export const routes: Routes = [
         path: "devolucao",
         component: DevolucaoComponent
     },
-
+    {
+        path: "dependente",
+        component: DependenteComponent
+    },
 ];
