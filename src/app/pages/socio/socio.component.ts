@@ -28,7 +28,7 @@ export class SocioFormComponent implements OnInit {
   ngOnInit(): void {
     this.socioService.getSocios().subscribe((resposta) => {
       this.Socios = resposta;
-    })
+    });
   }
 
   carregarSocios(): void {
@@ -37,7 +37,7 @@ export class SocioFormComponent implements OnInit {
     });
   }
 
-  abrirDialog(Socio: Socio): void {
+  abrirDialog(socio: Socio): void {
     // const dialogRef = this.dialog.open(EditarSocioDialogComponent, {
     //     width: '250px',
     //     data: Socio,
@@ -50,8 +50,8 @@ export class SocioFormComponent implements OnInit {
     // });
   }
 
-  atualizarSocio(Socio: Socio): void {
-    this.socioService.atualizarSocio(Socio, Socio.id!).subscribe(() => {
+  atualizarSocio(socio: Socio): void {
+    this.socioService.atualizarSocio(socio, socio.id!).subscribe(() => {
       alert('Socio atualizado com sucesso!');
       this.carregarSocios();
     });
@@ -78,6 +78,7 @@ export class SocioFormComponent implements OnInit {
         this.sexo = '';
         this.ativo = false;
         alert('Socio salvo com sucesso!');
+        console.log(novoSocio);
         this.ngOnInit();
       });
     } else {

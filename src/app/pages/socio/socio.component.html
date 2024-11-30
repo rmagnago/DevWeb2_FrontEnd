@@ -35,7 +35,10 @@
                         Nº de Inscrição:
                     </th>
                     <th>
-                        Sócios:
+                        Nome:
+                    </th>
+                    <th>
+                        CPF:
                     </th>
                     <th>
                         Dt Nascimento:
@@ -44,7 +47,10 @@
                         Sexo:
                     </th>
                     <th>
-                        Ativo:
+                        Endereço:
+                    </th>
+                    <th>
+                        Telefone:
                     </th>
                     <th>
                         Ações
@@ -62,13 +68,19 @@
                         {{ item.nome }}
                     </td>
                     <td>
+                        {{ item.cpf }}
+                    </td>
+                    <td>
                         {{ item.dtNascimento }}
                     </td>
                     <td>
                         {{ item.sexo }}
                     </td>
                     <td>
-                        {{ item.ativo }}
+                        {{ item.endereco }}
+                    </td>
+                    <td>
+                        {{ item.telefone }}
                     </td>
                     <td>
                         <button id="editar" (click)="abrirDialog(item)">Editar</button>

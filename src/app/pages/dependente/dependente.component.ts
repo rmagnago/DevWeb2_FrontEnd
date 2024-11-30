@@ -73,7 +73,7 @@ export class DependenteComponent implements OnInit {
     if (this.nome) {
       const novoDependente: Dependente = {
         nome: this.nome, numInscricao: this.numInscricao, dtNascimento: this.dtNascimento, sexo: this.sexo, ativo: this.ativo,
-        Socio: ''
+        Socio: null!
       };
       this.dependenteService.criarDependente(novoDependente).subscribe(() => {
         this.nome = '';
