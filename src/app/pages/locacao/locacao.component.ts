@@ -7,6 +7,7 @@ import { Item } from '../../models/item';
 import { Locacao } from '../../models/locacao';
 import { SelectClienteComponent } from '../../components/locacao/select-cliente/select-cliente.component';
 import { SelectItemComponent } from '../../components/locacao/select-item/select-item.component';
+import { EditarLocacaoComponent } from '../../components/locacao/editar-locacao/editar-locacao.component';
 
 @Component({
   selector: 'app-locacao-form',
@@ -41,17 +42,17 @@ export class LocacaoFormComponent implements OnInit {
   }
 
   abrirDialog(locacao: Locacao): void {
-    // const dialogRef = this.dialog.open(EditarLocacaoDialogComponent, {
-    //   width: '550px',
-    //   height: '550px',
-    //   data: { ...locacao },
-    // });
+    const dialogRef = this.dialog.open(EditarLocacaoComponent, {
+      width: '550px',
+      height: '550px',
+      data: { ...locacao },
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     this.atualizarLocacao(result);
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.atualizarLocacao(result);
+      }
+    });
   }
 
   atualizarLocacao(locacao: Locacao): void {
@@ -82,7 +83,7 @@ export class LocacaoFormComponent implements OnInit {
   }
 
   salvarLocacao(): void {
-    if (this.cliente && this.item && this.dtLocacao && this.dtDevolucaoPrevista  && this.valor) {
+    if (this.cliente && this.item && this.dtLocacao && this.dtDevolucaoPrevista && this.valor) {
       const novoLocacao: Locacao = {
         dtLocacao: this.dtLocacao,
         dtDevolucaoPrevista: this.dtDevolucaoPrevista,

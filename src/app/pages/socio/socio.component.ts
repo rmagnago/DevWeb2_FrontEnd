@@ -40,7 +40,7 @@ export class SocioFormComponent implements OnInit {
 
   abrirDialog(socio: Socio): void {
     const dialogRef = this.dialog.open(EditarSocioComponent, {
-      width: '250px',
+      width: '450px',
       data: socio,
     });
 

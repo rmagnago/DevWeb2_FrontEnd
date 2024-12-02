@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Editar Locação</h2>
+<mat-dialog-content>
+
+    <mat-form-field>
+        <mat-label>Cliente</mat-label>
+        <select-cliente (clienteSelecionado)="data.cliente = $event" [selectedCliente]="data.cliente" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Item</mat-label>
+        <select-item (itemSelecionado)="data.item = $event" [selectedItem]="data.item" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Data de Locação</mat-label>
+        <input matInput [(ngModel)]="data.dtLocacao">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Data de Devolução</mat-label>
+        <input matInput [(ngModel)]="data.dtDevolucaoPrevista">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Valor</mat-label>
+        <input matInput [(ngModel)]="data.valor">
+    </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button [mat-dialog-close]="data">Salvar</button>
+</mat-dialog-actions>

@@ -5,7 +5,7 @@ import { Dependente } from '../../models/dependente';
 import { Socio } from '../../models/socio';
 import { SelectSocioComponent } from "../../components/dependente/select-socio/select-socio.component";
 import { DependenteService } from '../../services/dependentet';
-import { EditarDependenteComponent } from '../../components/dependente/editar-titulo-dialog/editar-dependente';
+import { EditarDependenteComponent } from '../../components/dependente/editar-titulo/editar-dependente';
 
 @Component({
   selector: 'app-dependente',
