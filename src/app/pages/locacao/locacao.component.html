@@ -1,0 +1,72 @@
+<div style="display: flex; flex-direction: row;">
+    <form (ngSubmit)="salvarLocacao()">
+
+        <div class="input">
+            <label for="cliente">Cliente: </label>
+            <select-cliente (clienteSelecionado)="cliente = $event" />
+
+            <label for="item">Item: </label>
+            <select-item (itemSelecionado)="item = $event" />
+
+            <label for="dtLocacao">Data de Locação: </label>
+            <input type="date" [(ngModel)]="dtLocacao" name="dtLocacao" required>
+
+            <label for="dtDevolucaoPrevista">Data de Devolução: </label>
+            <input type="date" [(ngModel)]="dtDevolucaoPrevista" name="dtDevolucaoPrevista" required>
+
+            <label for="valor">Valor da Locação: </label>
+            <input type="number" [(ngModel)]="valor" name="valor" required>
+
+            <button id="salvar">
+                Salvar
+            </button>
+        </div>
+    </form>
+
+    <div class="resultado">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Cliente:
+                    </th>
+                    <th>
+                        Item:
+                    </th>
+                    <th>
+                        Data da Locação:
+                    </th>
+                    <th>
+                        Previsão de Devolução:
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (item of locacoes; track $index) {
+                <tr>
+                    <td>
+                        {{ item.cliente.nome }}
+                    </td>
+                    <td>
+                        {{ item.item.titulo.nome }}
+                    </td>
+                    <td>
+                        {{ formatadorData(item.dtLocacao) }}
+                    </td>
+                    <td>
+                        {{ formatadorData(item.dtDevolucaoPrevista) }}
+                    </td>
+                    <td>
+                        <button id="editar" (click)="abrirDialog(item)">Editar</button>
+                        <button id="excluir" (click)="apagarLocacao(item.id!)">Excluir</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
