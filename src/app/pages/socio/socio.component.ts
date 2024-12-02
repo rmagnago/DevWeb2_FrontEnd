@@ -4,6 +4,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { SocioService } from '../../services/socio';
 import { Socio } from '../../models/socio';
 import { MatTabsModule } from '@angular/material/tabs';
+import { EditarSocioComponent } from '../../components/socio/editar-socio/editar-socio.component';
 
 @Component({
   selector: 'app-socio-form',
@@ -38,16 +39,16 @@ export class SocioFormComponent implements OnInit {
   }
 
   abrirDialog(socio: Socio): void {
-    // const dialogRef = this.dialog.open(EditarSocioDialogComponent, {
-    //     width: '250px',
-    //     data: Socio,
-    // });
+    const dialogRef = this.dialog.open(EditarSocioComponent, {
+      width: '250px',
+      data: socio,
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //     if (result) {
-    //         this.atualizarSocio(result);
-    //     }
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.atualizarSocio(result);
+      }
+    });
   }
 
   atualizarSocio(socio: Socio): void {

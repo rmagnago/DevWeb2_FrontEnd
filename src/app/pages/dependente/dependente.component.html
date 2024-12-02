@@ -62,8 +62,9 @@
                         {{ item.sexo }}
                     </td>
                     <td>
-                        {{ item.socio.nome }}
-                    </td>
+                        {{ item.socio.nome || 'Não informado' }}
+                      </td>
+                      
                     <td>
                         <button id="editar" (click)="abrirDialog(item)">Editar</button>
                         <button id="excluir" (click)="apagarDependente(item.id!)">Excluir</button>

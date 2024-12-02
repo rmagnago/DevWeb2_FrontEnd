@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Editar Dependente</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Nº de Inscrição:</mat-label>
+    <input matInput [(ngModel)]="data.numInscricao">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Nome:</mat-label>
+    <input matInput [(ngModel)]="data.nome">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Data de Nascimento:</mat-label>
+    <input matInput [(ngModel)]="data.dtNascimento">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Sexo:</mat-label>
+    <input matInput [(ngModel)]="data.sexo">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Sócio:</mat-label>
+    <select-socio (socioSelecionado)="data.socio = $event" [selectedSocio]="data.socio" />
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data">Salvar</button>
+</mat-dialog-actions>

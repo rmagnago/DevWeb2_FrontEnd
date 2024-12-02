@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>Editar Sócio</h2>
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Nº de Inscrição:</mat-label>
+        <input matInput [(ngModel)]="data.numInscricao" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Nome:</mat-label>
+        <input matInput [(ngModel)]="data.nome" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>CPF:</mat-label>
+        <input matInput [(ngModel)]="data.cpf" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Data de Nascimento:</mat-label>
+        <input matInput [(ngModel)]="data.dtNascimento" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Sexo:</mat-label>
+        <input matInput [(ngModel)]="data.sexo" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Endereço:</mat-label>
+        <input matInput [(ngModel)]="data.endereco" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Telefone:</mat-label>
+        <input matInput [(ngModel)]="data.telefone" />
+    </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button [mat-dialog-close]="data">Salvar</button>
+</mat-dialog-actions>
