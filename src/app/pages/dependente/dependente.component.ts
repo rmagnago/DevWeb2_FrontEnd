@@ -15,12 +15,12 @@ import { DependenteService } from '../../services/dependentet';
 })
 export class DependenteComponent implements OnInit {
 
-  nome: string = '';
-  numInscricao: number = 0;
-  dtNascimento: Date = null!;
-  sexo: string = '';
-  ativo: boolean = true;
-  socio: Socio = null!;
+  nome!: string;
+  numInscricao!: number;
+  dtNascimento!: Date;
+  sexo!: string;
+  ativo!: boolean;
+  socio!: Socio;
   dependentes!: Dependente[];
 
   constructor(private dependenteService: DependenteService, public dialog: MatDialog) { }
@@ -68,8 +68,12 @@ export class DependenteComponent implements OnInit {
   salvarDependente() {
     if (this.nome) {
       const novoDependente: Dependente = {
-        nome: this.nome, numInscricao: this.numInscricao, dtNascimento: this.dtNascimento, sexo: this.sexo, ativo: this.ativo,
-        Socio: null!
+        nome: this.nome, 
+        numInscricao: this.numInscricao, 
+        dtNascimento: this.dtNascimento, 
+        sexo: this.sexo, 
+        ativo: this.ativo, 
+        socio: this.socio,
       };
       this.dependenteService.criarDependente(novoDependente).subscribe(() => {
         this.nome = '';
@@ -78,7 +82,7 @@ export class DependenteComponent implements OnInit {
         this.sexo = '';
         this.ativo = false;
         alert('Dependente salvo com sucesso!');
-        this.ngOnInit();
+        this.carregarDependentes();
       });
     } else {
       alert('Nome do Dependente é obrigatório');

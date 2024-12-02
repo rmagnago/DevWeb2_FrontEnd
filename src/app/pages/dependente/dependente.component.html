@@ -13,7 +13,7 @@
                 <label for="title">Sexo: </label>
                 <input type="text" placeholder="Digite o sexo" [(ngModel)]="sexo" [ngModelOptions]="{standalone: true}">
                 <label for="title">A qual sócio é dependente?</label>
-                <select-socio />
+                <select-socio (socioSelecionado)="socio = $event" />
                 <button id="salvar">
                     Salvar
                 </button>
@@ -38,7 +38,7 @@
                         Sexo:
                     </th>
                     <th>
-                        Ativo:
+                        Sócio:
                     </th>
                     <th>
                         Ações
@@ -62,7 +62,7 @@
                         {{ item.sexo }}
                     </td>
                     <td>
-                        {{ item.ativo }}
+                        {{ item.socio.nome }}
                     </td>
                     <td>
                         <button id="editar" (click)="abrirDialog(item)">Editar</button>
