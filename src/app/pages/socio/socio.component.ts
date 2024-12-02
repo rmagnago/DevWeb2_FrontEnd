@@ -23,18 +23,18 @@ export class SocioFormComponent implements OnInit {
   cpf: string = '';
   telefone: string = '';
   endereco: string = '';
-  Socios!: Socio[];
+  socios!: Socio[];
 
   constructor(private socioService: SocioService, public dialog: MatDialog) { }
   ngOnInit(): void {
     this.socioService.getSocios().subscribe((resposta) => {
-      this.Socios = resposta;
+      this.socios = resposta;
     });
   }
 
   carregarSocios(): void {
     this.socioService.getSocios().subscribe((resposta) => {
-      this.Socios = resposta;
+      this.socios = resposta;
     });
   }
 
