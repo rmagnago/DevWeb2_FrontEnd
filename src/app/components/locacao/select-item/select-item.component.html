@@ -1,0 +1,10 @@
+<form>
+    <mat-form-field style="width: 100%;">
+        <mat-label>Itens</mat-label>
+        <mat-select [(ngModel)]="selectedItem" name="itens" (selectionChange)="onItemChange()">
+            @for (item of itens; track item) {
+            <mat-option [value]="item">{{item.titulo.nome}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+</form>
