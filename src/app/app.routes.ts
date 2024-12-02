@@ -6,6 +6,7 @@ import { TituloFormComponent } from './pages/titulo/titulo.component';
 import { ItemFormComponent } from './pages/item/item.component';
 import { DependenteComponent } from './pages/dependente/dependente.component';
 import { SocioFormComponent } from './pages/socio/socio.component';
+import { LocacaoFormComponent } from './pages/locacao/locacao.component';
 
 export const routes: Routes = [
     {
@@ -40,10 +41,10 @@ export const routes: Routes = [
         path: "dependente",
         component: DependenteComponent
     },
-    // {
-    //     path: "locacao",
-    //     component: LocacaoFormComponent
-    // },
+    {
+        path: "locacao",
+        component: LocacaoFormComponent
+    },
     // {
     //     path: "devolucao",
     //     component: DevolucaoComponent
