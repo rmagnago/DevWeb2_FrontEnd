@@ -49,6 +49,14 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+#devolver {
+    margin-right: 10px;
+    background-color: #5c5c5c;
+}
+
+#devolver:hover {
+    background-color: #3b3b3b;
+}
 
 #excluir {
     background-color: #ff2626;

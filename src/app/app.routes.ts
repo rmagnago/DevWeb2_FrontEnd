@@ -11,7 +11,7 @@ import { LocacaoFormComponent } from './pages/locacao/locacao.component';
 export const routes: Routes = [
     {
         path: "",
-        component: AtorFormComponent
+        component: LocacaoFormComponent
     },
     {
         path: "ator",
@@ -45,8 +45,4 @@ export const routes: Routes = [
         path: "locacao",
         component: LocacaoFormComponent
     },
-    // {
-    //     path: "devolucao",
-    //     component: DevolucaoComponent
-    // }
 ];

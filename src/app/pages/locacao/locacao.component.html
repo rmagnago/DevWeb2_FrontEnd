@@ -40,6 +40,9 @@
                         Previsão de Devolução:
                     </th>
                     <th>
+                        Valor:
+                    </th>
+                    <th>
                         Ações
                     </th>
                 </tr>
@@ -61,6 +64,10 @@
                         {{ formatadorData(item.dtDevolucaoPrevista) }}
                     </td>
                     <td>
+                        {{ item.valor }}
+                    </td>
+                    <td>
+                        <button id="devolver" (click)="abrirDevolucao(item)">Devolução </button>
                         <button id="editar" (click)="abrirDialog(item)">Editar</button>
                         <button id="excluir" (click)="apagarLocacao(item.id!)">Excluir</button>
                     </td>

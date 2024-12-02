@@ -8,6 +8,7 @@ import { Locacao } from '../../models/locacao';
 import { SelectClienteComponent } from '../../components/locacao/select-cliente/select-cliente.component';
 import { SelectItemComponent } from '../../components/locacao/select-item/select-item.component';
 import { EditarLocacaoComponent } from '../../components/locacao/editar-locacao/editar-locacao.component';
+import { DevolucaoComponent } from '../../components/locacao/devolucao/devolucao.component';
 
 @Component({
   selector: 'app-locacao-form',
@@ -22,12 +23,12 @@ export class LocacaoFormComponent implements OnInit {
 
   dtLocacao: Date = new Date();
   dtDevolucaoPrevista: Date = new Date();
-  dtDevolucaoEfetiva: Date = new Date();
   valor: number = 0;
   multa: number = 0;
   item: Item = undefined!;
   cliente: Cliente = undefined!;
   locacoes!: Locacao[];
+  dtDevolucaoEfetiva: Date = new Date();
 
   constructor(private locacaoService: LocacaoService, public dialog: MatDialog) { }
 
@@ -54,6 +55,25 @@ export class LocacaoFormComponent implements OnInit {
       }
     });
   }
+
+  abrirDevolucao(locacao: Locacao): void {
+    const dialogRef = this.dialog.open(DevolucaoComponent, {
+      width: '700px',
+      height: '700px',
+      data: { ...locacao },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.atualizarLocacao(result);
+
+        if (result.multa !== undefined) {
+          this.valor += result.multa;
+        }
+      }
+    });
+  }
+
 
   atualizarLocacao(locacao: Locacao): void {
     if (locacao.id) {
@@ -87,14 +107,16 @@ export class LocacaoFormComponent implements OnInit {
       const novoLocacao: Locacao = {
         dtLocacao: this.dtLocacao,
         dtDevolucaoPrevista: this.dtDevolucaoPrevista,
+        dtDevolucaoEfetiva: null!,
         valor: this.valor,
+        multa: null!,
         item: this.item,
         cliente: this.cliente,
       };
       this.locacaoService.criarLocacao(novoLocacao).subscribe(() => {
         this.dtLocacao = new Date();
         this.dtDevolucaoPrevista = new Date();
-        this.dtDevolucaoEfetiva = new Date();
+        this.dtDevolucaoEfetiva = null!;
         this.valor = 0;
         this.multa = 0;
         this.item = undefined!;
